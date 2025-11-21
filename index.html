@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Indah's Cute Page 🌸</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="card">
+    <header class="hero">
+      <h1>Halo! Aku Indah 🌼</h1>
+      <p class="tagline">Situs mini yang lucu dan penuh warna</p>
+    </header>
+
+    <section class="content">
+      <div class="avatar">🌸</div>
+      <p>
+        Selamat datang! Di sini ada tombol kecil yang bereaksi lucu ketika kamu klik.
+      </p>
+
+      <div class="buttons">
+        <button id="btn-smile" class="btn">Klik aku 😊</button>
+        <button id="btn-confetti" class="btn ghost">Kejutan 🎉</button>
+      </div>
+
+      <div id="message" class="message hidden">Terima kasih sudah mampir! 💖</div>
+    </section>
+
+    <footer class="foot">
+      <small>Made with 💕 • GitHub ready</small>
+    </footer>
+  </main>
+
+  <script>
+    // Interaksi sederhana
+    const btnSmile = document.getElementById('btn-smile');
+    const btnConfetti = document.getElementById('btn-confetti');
+    const message = document.getElementById('message');
+
+    btnSmile.addEventListener('click', () => {
+      message.classList.remove('hidden');
+      message.textContent = 'Kamu membuat hariku lebih cerah! ☀️';
+      btnSmile.classList.add('pop');
+      setTimeout(() => btnSmile.classList.remove('pop'), 500);
+    });
+
+    btnConfetti.addEventListener('click', () => {
+      // efek "konfeti" sederhana: munculkan beberapa emoji acak
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      for (let i = 0; i < 14; i++) {
+        const piece = document.createElement('span');
+        const emojis = ['✨','🌸','💖','🎈','🍬','🌟'];
+        piece.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        piece.style.left = (Math.random()*100) + '%';
+        piece.style.top = (Math.random()*30) + '%';
+        piece.style.transform = `rotate(${Math.random()*360}deg)`;
+        confetti.appendChild(piece);
+      }
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 1800);
+    });
+  </script>
+</body>
+</html>
